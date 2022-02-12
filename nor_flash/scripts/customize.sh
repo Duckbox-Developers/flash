@@ -18,6 +18,9 @@ rm -f $TMPROOTDIR/lib/modules/cpu_frequ.ko
 if [ "$BOXTYPE" == "ufs910" -o "$BOXTYPE" == "ufs922" ];then
 	rm -f $TMPROOTDIR/lib/modules/cifs.ko
 
+	rm -f $TMPROOTDIR/sbin/mount.ntfs-3g
+	rm -f $TMPROOTDIR/sbin/sfdisk
+
 	rm -f $TMPROOTDIR/usr/bin/curl
 	rm -f $TMPROOTDIR/usr/bin/dvbsnoop
 
@@ -25,8 +28,7 @@ if [ "$BOXTYPE" == "ufs910" -o "$BOXTYPE" == "ufs922" ];then
 	rm -f $TMPROOTDIR/usr/bin/udpxrec
 
 	rm -f $TMPROOTDIR/usr/bin/ntfs-3g
-	rm -f $TMPROOTDIR/sbin/mount.ntfs-3g
-	rm -f $TMPROOTDIR/sbin/sfdisk
+	rm -f $TMPROOTDIR/usr/lib/autofs/parse_sun.so
 	rm -f $TMPROOTDIR/usr/lib/libntfs-3g.so*
 	rm -rf $TMPROOTDIR/usr/lib/ntfs-3g
 
