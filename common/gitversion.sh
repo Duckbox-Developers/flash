@@ -24,4 +24,5 @@ fi
 gitversion="_BASE-rev`(cd $CURDIR/../../ && git log | grep "^commit" | wc -l)`$HAL_REV$NMP_REV$DATETIME"
 
 echo "GITVERSION   = $gitversion"
-export gitversion
+#export gitversion
+echo $gitversion > gitversion

@@ -6,6 +6,7 @@ OUTDIR=$3
 TMPROOTDIR=$4
 TMPKERNELDIR=$5
 TMPVARDIR=$6
+MAINTAINER=$7
 
 echo "CURDIR       = $CURDIR"
 echo "TUFSBOXDIR   = $TUFSBOXDIR"
@@ -13,6 +14,7 @@ echo "OUTDIR       = $OUTDIR"
 echo "TMPROOTDIR   = $TMPROOTDIR"
 echo "TMPKERNELDIR = $TMPKERNELDIR"
 echo "TMPVARDIR    = $TMPVARDIR"
+echo "MAINTAINER   = $MAINTAINER"
 
 MKSQUASHFS=$TUFSBOXDIR/host/bin/mksquashfs
 MKFSJFFS2=$TUFSBOXDIR/host/bin/mkfs.jffs2
@@ -25,7 +27,9 @@ elif [ -f $TMPVARDIR/etc/hostname ]; then
 	BOXTYPE=`cat $TMPVARDIR/etc/hostname`
 fi
 
-. $CURDIR/../common/gitversion.sh $CURDIR
+sudo -H -u $MAINTAINER bash $CURDIR/../common/gitversion.sh $CURDIR
+gitversion=$(cat gitversion)
+rm -f gitversion
 
 OUTFILE=$OUTDIR/miniFLASH.img
 OUTFILE_Z=$OUTDIR/$BOXTYPE$gitversion

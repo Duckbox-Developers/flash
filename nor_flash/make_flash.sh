@@ -38,7 +38,7 @@ echo "Or insert your changes into scripts/customize.sh"
 $SCRIPTDIR/customize.sh $CURDIR $TMPROOTDIR $TMPKERNELDIR $TMPSTORAGEDIR
 echo "-----------------------------------------------------------------------"
 echo "Creating flash image..."
-$SCRIPTDIR/flash_part_w_fw.sh $CURDIR $TUFSBOXDIR $OUTDIR $TMPROOTDIR $TMPKERNELDIR $TMPSTORAGEDIR
+$SCRIPTDIR/flash_part_w_fw.sh $CURDIR $TUFSBOXDIR $OUTDIR $TMPROOTDIR $TMPKERNELDIR $TMPSTORAGEDIR $1
 echo "-----------------------------------------------------------------------"
 
 AUDIOELFSIZE=`stat -c %s $TMPROOTDIR/lib/firmware/audio.elf`

@@ -6,6 +6,7 @@ OUTDIR=$3
 TMPROOTDIR=$4
 TMPKERNELDIR=$5
 TMPFWDIR=$6
+MAINTAINER=$7
 
 echo "CURDIR       = $CURDIR"
 echo "TUFSBOXDIR   = $TUFSBOXDIR"
@@ -13,6 +14,7 @@ echo "OUTDIR       = $OUTDIR"
 echo "TMPROOTDIR   = $TMPROOTDIR"
 echo "TMPKERNELDIR = $TMPKERNELDIR"
 echo "TMPFWDIR     = $TMPFWDIR"
+echo "MAINTAINER   = $MAINTAINER"
 
 MKFSJFFS2=$TUFSBOXDIR/host/bin/mkfs.jffs2
 SUMTOOL=$TUFSBOXDIR/host/bin/sumtool
@@ -24,7 +26,9 @@ elif [ -f $TMPROOTDIR/var/etc/hostname ]; then
 	BOXTYPE=`cat $TMPROOTDIR/var/etc/hostname`
 fi
 
-. $CURDIR/../common/gitversion.sh $CURDIR
+sudo -H -u $MAINTAINER bash $CURDIR/../common/gitversion.sh $CURDIR
+gitversion=$(cat gitversion)
+rm -f gitversion
 
 OUTFILE=$OUTDIR/$BOXTYPE$gitversion
 

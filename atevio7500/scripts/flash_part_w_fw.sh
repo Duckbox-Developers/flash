@@ -7,6 +7,7 @@ TMPROOTDIR=$4
 TMPKERNELDIR=$5
 TMPFWDIR=$6
 TMPEXTDIR=$7
+MAINTAINER=$8
 
 echo "CURDIR       = $CURDIR"
 echo "TUFSBOXDIR   = $TUFSBOXDIR"
@@ -15,6 +16,7 @@ echo "TMPROOTDIR   = $TMPROOTDIR"
 echo "TMPKERNELDIR = $TMPKERNELDIR"
 echo "TMPFWDIR     = $TMPFWDIR"
 echo "TMPEXTDIR    = $TMPEXTDIR"
+echo "MAINTAINER   = $MAINTAINER"
 
 MKFSJFFS2=$TUFSBOXDIR/host/bin/mkfs.jffs2
 SUMTOOL=$TUFSBOXDIR/host/bin/sumtool
@@ -23,7 +25,9 @@ FUP=$TUFSBOXDIR/host/bin/fup
 
 BOXTYPE=`cat $TMPEXTDIR/etc/hostname`
 
-. $CURDIR/../common/gitversion.sh $CURDIR
+sudo -H -u $MAINTAINER bash $CURDIR/../common/gitversion.sh $CURDIR
+gitversion=$(cat gitversion)
+rm -f gitversion
 
 OUTFILE=$OUTDIR/update_w_fw.ird
 OUTFILE_Z=$OUTDIR/$BOXTYPE$gitversion
