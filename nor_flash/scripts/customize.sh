@@ -15,6 +15,7 @@ echo "-----------------------------------------------------------------------"
 echo "customizing: $BOXTYPE"
 # Do your customizations here
 rm -f $TMPROOTDIR/lib/modules/cpu_frequ.ko
+rm -f $TMPROOTDIR/usr/share/lua/5.2/socket/smtp.lua
 sed -i -e '/pip/d' $TMPROOTDIR/usr/share/tuxbox/neutrino/locale/deutsch.locale
 sed -i -e '/pip/d' $TMPROOTDIR/usr/share/tuxbox/neutrino/locale/english.locale
 sed -i -e '/avinputmode/d' $TMPROOTDIR/usr/share/tuxbox/neutrino/locale/deutsch.locale
