@@ -13,13 +13,14 @@ fi
 
 echo "-----------------------------------------------------------------------"
 echo "customizing: $BOXTYPE"
-# Do your customizations here
+
 rm -f $TMPROOTDIR/lib/modules/cpu_frequ.ko
 rm -f $TMPROOTDIR/usr/share/lua/5.2/socket/smtp.lua
 sed -i -e '/pip/d' $TMPROOTDIR/usr/share/tuxbox/neutrino/locale/deutsch.locale
 sed -i -e '/pip/d' $TMPROOTDIR/usr/share/tuxbox/neutrino/locale/english.locale
 sed -i -e '/avinputmode/d' $TMPROOTDIR/usr/share/tuxbox/neutrino/locale/deutsch.locale
 sed -i -e '/avinputmode/d' $TMPROOTDIR/usr/share/tuxbox/neutrino/locale/english.locale
+
 if [ "$BOXTYPE" == "ufs910" -o "$BOXTYPE" == "ufs922" ];then
 	rm -f $TMPROOTDIR/lib/modules/cifs.ko
 
@@ -44,8 +45,8 @@ if [ "$BOXTYPE" == "ufs910" -o "$BOXTYPE" == "ufs922" ];then
 	find $TMPROOTDIR/usr/share/tuxbox/neutrino/locale -not -name deutsch.locale -not -name english.locale -not -name deutsch.po -not -name english.po -type f -delete
 
 	if [ "$BOXTYPE" == "ufs922" ]; then
-		mv $TMPROOTDIR/bin/input $TMPSTORAGEDIR/bin
-		mv $TMPROOTDIR/usr/bin/amixer $TMPSTORAGEDIR/bin
+		[ -f $TMPROOTDIR/bin/input ] && mv $TMPROOTDIR/bin/input $TMPSTORAGEDIR/bin
+		[ -f $TMPROOTDIR/usr/bin/amixer ] && mv $TMPROOTDIR/usr/bin/amixer $TMPSTORAGEDIR/bin
 	fi
 fi
 
