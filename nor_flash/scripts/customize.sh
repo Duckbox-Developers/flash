@@ -45,7 +45,7 @@ if [ "$BOXTYPE" == "ufs910" -o "$BOXTYPE" == "ufs922" ];then
 	find $TMPROOTDIR/usr/share/tuxbox/neutrino/locale -not -name deutsch.locale -not -name english.locale -not -name deutsch.po -not -name english.po -type f -delete
 
 	if [ "$BOXTYPE" == "ufs922" ]; then
-		[ -f $TMPROOTDIR/bin/input ] && mv $TMPROOTDIR/bin/input $TMPSTORAGEDIR/bin
+#		[ -f $TMPROOTDIR/bin/input ] && mv $TMPROOTDIR/bin/input $TMPSTORAGEDIR/bin
 		[ -f $TMPROOTDIR/usr/bin/amixer ] && mv $TMPROOTDIR/usr/bin/amixer $TMPSTORAGEDIR/bin
 	fi
 fi
